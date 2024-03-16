@@ -41,9 +41,20 @@ public class SelenideRepositorySearch {
 
         $$(".heading-element").findBy(text("Mechanisms:")).shouldBe(visible);
         $("#user-content-3-using-junit5-extend-test-class").parent().shouldHave(text("Using JUnit5"));
-        $$("h4[class='heading-element']").findBy(text("3. Using JUnit5 extend test class:")).shouldBe(visible);
+        $("#wiki-body").shouldHave(text("""
+            @ExtendWith({SoftAssertsExtension.class})
+            class Tests {
+                @Test
+                void test() {
+                    Configuration.assertionMode = SOFT;
+                    open("page.html");
 
+                    $("#first").should(visible).click();
+                    $("#second").should(visible).click();
+                }
+            }""")).shouldBe(visible);
+    }
       //  Configuration.holdBrowserOpen=true;
     }
-}
+
 
