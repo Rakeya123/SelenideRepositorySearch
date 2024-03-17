@@ -1,26 +1,19 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Condition.*;
+
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-
-public class SelenideRepositorySearch {
+public class SelenideRepositorySearchTest {
 
     @BeforeAll
     static void beforeAll() {
-
-        Configuration.baseUrl = "https://github.com/"
-        ;
+        Configuration.baseUrl = "https://github.com/";
     }
     @Test
     void shouldFindSelenideRepositoryAtTheTopTest(){
