@@ -10,8 +10,7 @@ import org.openqa.selenium.Keys;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byTagName;
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 
@@ -24,7 +23,7 @@ public class SelenideRepositorySearch {
         ;
     }
     @Test
-    void shouldFindeSelenideRepositoreAtTheTop(){
+    void shouldFindSelenideRepositoryAtTheTopTest(){
 
         // Откройте страницу Selenide в Github
         open("/selenide/selenide");
@@ -33,10 +32,12 @@ public class SelenideRepositorySearch {
         $("#wiki-tab").click();
 
         // Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
-        $$("a[class='internal present']").findBy(text("Soft assertions")).shouldBe(visible);
+        //$$("a[class='internal present']").findBy(text("Soft assertions")).shouldBe(visible);
+        $("#wiki-pages-filter").setValue("SoftAssertions");
+        $("[data-filterable-for=wiki-pages-filter]").$(byText("SoftAssertions")).click();
 
         // Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
-        $$("a[class='internal present']").findBy(text("Soft assertions")).click();
+       // $$("a[class='internal present']").findBy(text("Soft assertions")).click();
 
 
         $$(".heading-element").findBy(text("Mechanisms:")).shouldBe(visible);
